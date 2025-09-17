@@ -5,6 +5,8 @@ import { useRef, useEffect, useState } from "react";
 import * as THREE from "three";
 import gsap from "gsap";
 import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
+import TrustSection from "@/Components/Learning";
+import TestimonialsSection from "@/Components/Testinomial";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -228,8 +230,8 @@ export default function Academy() {
   const courseWorlds = [
     {
       id: "security",
-      title: "Security Training",
-      description: "Prepare for the frontline. Protect people, assets, and operations with confidence.",
+      title: "Security",
+      description: "Prepare for the frontline.Protect people and operations.",
       details: "Guarding, fire protection, evacuation drills, compliance & legal basics.",
       accentColor: "border-blue-500 text-blue-400",
       icon: (
@@ -401,21 +403,6 @@ export default function Academy() {
     },
   ];
 
-  const testimonials = [
-    {
-      quote: "The Academy prepared me for leadership in security services — practical and confidence-boosting.",
-      author: "Michael Braun, Security Manager",
-    },
-    {
-      quote: "Energy management training helped us cut 15% costs while staying compliant.",
-      author: "Elena Voss, Facility Director",
-    },
-    {
-      quote: "Cleaning and hygiene standards training was vital for our hospital operations.",
-      author: "Dr. Laura Meier, Hospital Administrator",
-    },
-  ];
-
   return (
     <div className="w-full text-white font-sans main-content">
       <div
@@ -456,7 +443,7 @@ export default function Academy() {
       <div className="relative z-10">
         {/* Hero Section */}
         <section id="hero" className="hero-section min-h-screen flex flex-col items-center justify-center px-6 py-16">
-          <h1 className="hero-text text-4xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight text-center">
+          <h1 className="hero-text text-4xl md:text-4xl lg:text-4xl font-extrabold text-white tracking-tight text-center">
             Building Skills for a Safer, Smarter Future
           </h1>
           <p className="hero-text mt-4 text-lg md:text-xl lg:text-2xl font-medium text-gray-200 text-center">
@@ -482,13 +469,12 @@ export default function Academy() {
             {courseWorlds.map((world) => (
               <div
                 key={world.id}
-                className={`course-card p-6 rounded-xl bg-gray-800/50 border ${world.accentColor} shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300`}
+                className={`course-card p-6 rounded-xl bg-gray-800/50 border white shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300`}
                 onClick={() => handleSectionClick(world.zValue, "course-listing", world.rotationY)}
               >
                 <div className="flex items-center justify-center mb-4">{world.icon}</div>
                 <h3 className="text-xl font-semibold text-white text-center mb-2">{world.title}</h3>
                 <p className="text-gray-300 text-center mb-2">{world.description}</p>
-                <p className={`text-sm ${world.accentColor} text-center`}>{world.details}</p>
               </div>
             ))}
           </div>
@@ -497,7 +483,7 @@ export default function Academy() {
         {/* Filters & Sorting */}
         <section id="filters" className="filter-section py-16 px-6 flex flex-col items-center">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">Find Your Course</h2>
-          <div className="flex flex-col md:flex-row gap-4 max-w-4xl w-full">
+          <div className="flex flex-col md:flex-row gap-4 max-w-4xl w-full justify-center">
             <select className="p-2 rounded-lg bg-gray-800 text-white border border-gray-600">
               <option>Category</option>
               <option>Security</option>
@@ -532,23 +518,23 @@ export default function Academy() {
         </section>
 
         {/* Course Listing */}
-        <section id="course-listing" className="course-listing py-16 px-6 flex flex-col items-center">
+        <section
+          id="course-listing"
+          className="course-listing py-16 px-6 flex flex-col items-center"
+        >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 text-center">
             Our Courses
           </h2>
-          <div className="flex flex-col gap-12 max-w-4xl w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl w-full">
             {courses.map((course) => (
               <div
                 key={course.id}
                 className="course-card p-8 rounded-xl bg-gray-800/50 border border-gray-700 shadow-lg"
               >
-                <h3 className="text-2xl font-semibold text-white mb-4">{course.title}</h3>
+                <h3 className="text-2xl font-semibold text-white mb-4">
+                  {course.title}
+                </h3>
                 <p className="text-gray-300 mb-6">{course.description}</p>
-                <div className="flex flex-col md:flex-row gap-4 mb-6">
-                  <span className="text-gray-400">Duration: {course.duration}</span>
-                  <span className="text-gray-400">Price: {course.price}</span>
-                  <span className="text-gray-400">Level: {course.level}</span>
-                </div>
                 <button
                   onClick={() => handleSectionClick(-22, `course-${course.id}`, 0.2)}
                   className="px-6 py-3 text-white rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-700/50 transition-all duration-300 self-start"
@@ -560,105 +546,94 @@ export default function Academy() {
           </div>
         </section>
 
+
         {/* Course Detail (Sample) */}
         <section id="course-detail" className="py-16 px-6 flex flex-col items-center">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 text-center">
             Course Detail Example
           </h2>
-          <div id="course-fire-protection" className="flex flex-col max-w-4xl w-full p-8 rounded-xl bg-gray-800/50 border border-gray-700 shadow-lg">
-            <h3 className="text-2xl font-semibold text-white mb-4">Fire Protection & Evacuation Training</h3>
+          <div
+            id="course-fire-protection"
+            className="flex flex-col items-center max-w-4xl w-full p-8 rounded-xl bg-gray-800/50 border border-gray-700 shadow-lg text-center"
+          >
+            <h3 className="text-2xl font-semibold text-white mb-4">
+              Fire Protection & Evacuation Training
+            </h3>
+
             <span className="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm mb-4">
               Security Training
             </span>
-            <p className="text-gray-300 mb-6">
-              Gain the skills to manage fire safety, evacuation drills, and compliance obligations effectively.
+
+            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+              Gain the skills to manage fire safety, evacuation drills, and compliance
+              obligations effectively.
             </p>
-            <div className="mb-8">
-              <h4 className="text-lg font-semibold text-white mb-4">Learning Goals</h4>
-              <ul className="text-gray-300 space-y-2">
-                {courses[0].learningGoals.map((goal, index) => (
-                  <li key={index} className="flex items-start">
-                    <svg className="w-5 h-5 text-blue-400 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    {goal}
-                  </li>
-                ))}
-              </ul>
+
+            <div className="flex flex-col md:flex-row gap-16 mb-6 w-full justify-center text-left">
+              <div className="mb-8 mx-auto">
+                <h4 className="text-lg font-semibold text-white mb-4">
+                  Learning Goals
+                </h4>
+                <ul className="text-gray-300 space-y-2 text-left">
+                  {courses[0].learningGoals.map((goal, index) => (
+                    <li key={index} className="flex items-start">
+                      <svg
+                        className="w-5 h-5 text-blue-400 mr-2 mt-1"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      {goal}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mb-8 mx-auto">
+                <h4 className="text-lg font-semibold text-white mb-4">
+                  Key Facts
+                </h4>
+                <p className="text-gray-300">Duration: {courses[0].duration}</p>
+                <p className="text-gray-300">Format: {courses[0].format}</p>
+                <p className="text-gray-300">Price: {courses[0].price}</p>
+                <p className="text-gray-300">Certificate: {courses[0].certificate}</p>
+                <p className="text-gray-300">Level: {courses[0].level}</p>
+              </div>
             </div>
+
             <div className="mb-8">
               <h4 className="text-lg font-semibold text-white mb-4">Trainer</h4>
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-gray-600"></div>
+              <div className="flex flex-col items-center gap-4">
                 <div>
-                  <p className="text-gray-200 font-semibold">{courses[0].trainer.name}</p>
+                  <p className="text-gray-200 font-semibold">
+                    {courses[0].trainer.name}
+                  </p>
                   <p className="text-gray-300">{courses[0].trainer.bio}</p>
                 </div>
               </div>
             </div>
-            <div className="mb-8">
-              <h4 className="text-lg font-semibold text-white mb-4">Key Facts</h4>
-              <p className="text-gray-300">Duration: {courses[0].duration}</p>
-              <p className="text-gray-300">Format: {courses[0].format}</p>
-              <p className="text-gray-300">Price: {courses[0].price}</p>
-              <p className="text-gray-300">Certificate: {courses[0].certificate}</p>
-              <p className="text-gray-300">Level: {courses[0].level}</p>
-            </div>
+
             <button
               onClick={() => handleSectionClick(-22, "course-fire-protection", 0.2)}
-              className="px-6 py-3 text-white rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-700/50 transition-all duration-300 self-start"
+              className="px-6 py-3 text-white rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-700/50 transition-all duration-300 self-center"
             >
               Request a Seat
             </button>
           </div>
         </section>
 
+
         {/* Why Learn With Us */}
-        <section id="trust" className="trust-section py-16 px-6 flex flex-col items-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 text-center">
-            Why Learn With Us
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl w-full">
-            {[
-              { title: "Practical Focus", desc: "Real-world simulations, hands-on training.", icon: "M12 14l9-5-9-5-9 5 9 5zm0 7.36l-7-3.9v-7.46l7-3.9 7 3.9v7.46l-7 3.9z" },
-              { title: "Certified Trainers", desc: "Experts from industry & compliance boards.", icon: "M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" },
-              { title: "Recognized Certificates", desc: "Respected across Europe & globally.", icon: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" },
-              { title: "Flexible Formats", desc: "Online, on-site, hybrid.", icon: "M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12zM7 9h10v2H7V9z" },
-              { title: "Career Growth", desc: "Skills aligned with today’s facility challenges.", icon: "M12 2a10 10 0 00-7.35 3.56l1.42 1.42A8 8 0 0120 12H4v2h16v-2c0-3.31-2.69-6-6-6h-2V4h4c1.1 0 2-.9 2-2z" },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="p-6 rounded-xl bg-gray-800/50 border border-gray-700 shadow-lg"
-              >
-                <svg className="w-8 h-8 text-gray-300 mb-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d={item.icon} />
-                </svg>
-                <h4 className="text-lg font-semibold text-white mb-2">{item.title}</h4>
-                <p className="text-gray-300">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
+        <TrustSection />
         {/* Testimonials & Impact */}
-        <section id="testimonials" className="testimonials py-16 px-6 flex flex-col items-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 text-center">
-            What Our Learners Say
-          </h2>
-          <div className="flex flex-col gap-6 max-w-4xl w-full">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={index}
-                className="testimonial p-6 rounded-xl bg-gray-800/50 border border-gray-700 shadow-lg"
-              >
-                <p className="text-gray-300 italic">“{testimonial.quote}”</p>
-                <p className="text-gray-200 font-semibold mt-2">{testimonial.author}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <TestimonialsSection />
 
-        {/* Call to Action */}
+          {/* Call to Action */}
         <section id="cta" className="py-16 px-6 flex flex-col items-center">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 text-center">
             Take the Next Step in Your Career

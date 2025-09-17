@@ -992,7 +992,7 @@ export default function Home() {
             <div className="service-tile bg-gray-800/50 backdrop-blur-md p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105">
               <h3 className="text-2xl font-semibold text-white">Technical Facility Management</h3>
               <p className="mt-3 text-gray-200 text-base">
-                Optimize your building's technical systems with our expert operation, maintenance, and energy solutions.
+                Optimize your building&apos;s technical systems with our expert operation, maintenance, and energy solutions.
               </p>
               <ul className="mt-3 text-gray-200 text-base list-disc list-inside">
                 <li>HVAC, elevators, electrical systems</li>
