@@ -27,29 +27,19 @@ export default function Navbar() {
                         <a href="/">
                             <li className="cursor-pointer hover:text-blue-400 font-bold">Home</li>
                         </a>
-                        <li className="relative group cursor-pointer">
-                            <div className="flex items-center hover:text-blue-400 font-bold">
-                                About Us 
-                                {/* <ChevronDown size={16} className="ml-1" /> */}
-                            </div>
-                            {/* <ul className="absolute left-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg py-2 
-                     opacity-0 invisible group-hover:opacity-100 group-hover:visible 
-                     transition duration-200">
-                                {blogs.map((item) => (
-                                    <li
-                                        key={item}
-                                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer whitespace-nowrap"
-                                    >
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul> */}
-                        </li>
+                        <a href="/About">
+                            <li className="relative group cursor-pointer">
+                                About Us
+                            </li>
+                        </a>
 
                         {/* Services Dropdown */}
                         <li className="relative group cursor-pointer">
+
                             <div className="flex items-center hover:text-blue-400 font-bold">
-                                Our Services
+                                <a href="/Services">
+                                    Our Services
+                                </a>
                                 {/* Our Services <ChevronDown size={18} className="ml-1" /> */}
                             </div>
 
@@ -69,12 +59,14 @@ export default function Navbar() {
                         </li>
 
                         {/* Portfolio Dropdown */}
-                        <li className="relative group cursor-pointer">
-                            <div className="flex items-center hover:text-blue-400 font-bold">
-                                Portfolio
+                        <a href="/SubCompany">
+                            <li className="relative group cursor-pointer">
+                                Sub Company
+                                {/* <div className="flex items-center hover:text-blue-400 font-bold"> */}
+                                {/* Portfolio */}
                                 {/* Portfolio <ChevronDown size={16} className="ml-1" /> */}
-                            </div>
-                            {/* <ul className="absolute left-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg py-2 
+                                {/* </div> */}
+                                {/* <ul className="absolute left-0 mt-2 w-48 bg-white text-black rounded-lg shadow-lg py-2 
                      opacity-0 invisible group-hover:opacity-100 group-hover:visible 
                      transition duration-200">
                                 {portfolio.map((item) => (
@@ -86,9 +78,15 @@ export default function Navbar() {
                                     </li>
                                 ))}
                             </ul> */}
-                        </li>
+                            </li>
+                        </a>
 
-                        <li className="cursor-pointer hover:text-blue-400 font-bold">Blog</li>
+                        <a href="/Academy">
+                            <li className="cursor-pointer hover:text-blue-400 font-bold">Academy</li>
+                        </a>
+                        <a href="/Career">
+                            <li className="cursor-pointer hover:text-blue-400 font-bold">Career</li>
+                        </a>
                         <a href="/Contact">
                             <li className="cursor-pointer hover:text-blue-400 font-bold">Contact Us</li>
 

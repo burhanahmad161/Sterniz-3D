@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: blue;
   --foreground: #171717;
 }
 
@@ -14,13 +14,15 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: white;
+    --background: blue;
     --foreground: #ededed;
   }
 }
 
 body {
-  background: var(--background);
+  background-color: black;
+  /* background-size: cover; */
+  /* Optional: scales the image to cover the container */
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
