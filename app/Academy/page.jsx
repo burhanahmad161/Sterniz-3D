@@ -5,8 +5,8 @@ import { useRef, useEffect, useState } from "react";
 import * as THREE from "three";
 import gsap from "gsap";
 import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
-import TrustSection from "@/Components/Learning";
-import TestimonialsSection from "@/Components/Testinomial";
+import TrustSection from "../../Components/Learning";
+import TestimonialsSection from "../../Components/Testinomial";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 

@@ -6,7 +6,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
+} from "../Components/ui/carousel";
 
 export default function TestimonialsSection() {
   const testimonials = [
