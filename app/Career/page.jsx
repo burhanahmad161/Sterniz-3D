@@ -5,6 +5,8 @@ import { useRef, useEffect, useState } from "react";
 import * as THREE from "three";
 import gsap from "gsap";
 import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
+import TestimonialsSection from "../../Components/Testinomial";
+import JobsSection from "../../Components/OpenJobs";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -273,42 +275,6 @@ export default function Career() {
     },
   ];
 
-  const jobs = [
-    {
-      id: "facility-manager",
-      title: "Facility Manager (Technical FM)",
-      location: "Berlin, Germany",
-      type: "Full-time",
-      highlights: [
-        "Manage HVAC and electrical systems",
-        "Oversee emergency maintenance",
-        "Lead a team of technicians",
-      ],
-    },
-    {
-      id: "security-officer",
-      title: "Security Officer",
-      location: "Frankfurt, Germany",
-      type: "Full-time",
-      highlights: [
-        "On-site guarding & surveillance",
-        "Access control & visitor management",
-        "Emergency drills & fire safety",
-      ],
-    },
-    {
-      id: "software-engineer",
-      title: "Software Engineer",
-      location: "Munich, Germany",
-      type: "Full-time",
-      highlights: [
-        "Develop workflow automation tools",
-        "Integrate with existing systems",
-        "Support digital transformation",
-      ],
-    },
-  ];
-
   const jobDetail = {
     id: "security-officer-detail",
     title: "Security Officer",
@@ -338,21 +304,6 @@ export default function Career() {
     ],
     shifts: "Day/Night",
   };
-
-  const testimonials = [
-    {
-      quote: "I started as a guard and now manage a whole security team thanks to the Academy.",
-      author: "Lukas Schmidt, Security Team Lead",
-    },
-    {
-      quote: "The company supported me in relocating to a new region — the transition was smooth.",
-      author: "Anna Weber, Facility Coordinator",
-    },
-    {
-      quote: "Every day feels meaningful when your work improves safety and sustainability.",
-      author: "Clara Müller, Software Developer",
-    },
-  ];
 
   return (
     <div className="w-full text-white font-sans main-content">
@@ -472,37 +423,7 @@ export default function Career() {
 
         {/* Job Listings */}
         <section id="job-listing" className="job-listing py-16 px-6 flex flex-col items-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 text-center">
-            Open Positions
-          </h2>
-          <div className="flex flex-col gap-12 max-w-4xl w-full">
-            {jobs.map((job) => (
-              <div
-                key={job.id}
-                className="job-card p-8 rounded-xl border border-gray-700 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-              >
-                <h3 className="text-2xl font-semibold text-white mb-4">{job.title}</h3>
-                <p className="text-gray-300 mb-2">Location: {job.location}</p>
-                <p className="text-gray-300 mb-4">Type: {job.type}</p>
-                <ul className="text-gray-300 space-y-2 mb-6">
-                  {job.highlights.map((highlight, index) => (
-                    <li key={index} className="flex items-start">
-                      <svg className="w-5 h-5 text-blue-400 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                      {highlight}
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  onClick={() => handleSectionClick(-22, "job-detail", 0.2)}
-                  className="px-6 py-3 text-white rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-800/50 transition-all duration-300"
-                >
-                  View Job
-                </button>
-              </div>
-            ))}
-          </div>
+          <JobsSection handleSectionClick={handleSectionClick} />
         </section>
 
         {/* Job Detail (Sample) */}
@@ -512,57 +433,61 @@ export default function Career() {
           </h2>
           <div className="flex flex-col max-w-4xl w-full p-8 rounded-xl border border-gray-700 shadow-lg">
             <h3 className="text-2xl font-semibold text-white mb-4">{jobDetail.title} – {jobDetail.location}</h3>
-            <div className="mb-8">
-              <h4 className="text-lg font-semibold text-white mb-4">Highlights</h4>
-              <ul className="text-gray-300 space-y-2">
-                {jobDetail.highlights.map((highlight, index) => (
-                  <li key={index} className="flex items-start">
-                    <svg className="w-5 h-5 text-blue-400 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    {highlight}
-                  </li>
-                ))}
-              </ul>
+            <div className="flex flex-col md:flex-row gap-8 mb-8 justify-between">
+              <div className="mb-8">
+                <h4 className="text-lg font-semibold text-white mb-4">Highlights</h4>
+                <ul className="text-gray-300 space-y-2">
+                  {jobDetail.highlights.map((highlight, index) => (
+                    <li key={index} className="flex items-start">
+                      <svg className="w-5 h-5 text-blue-400 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      {highlight}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mb-8">
+                <h4 className="text-lg font-semibold text-white mb-4">Responsibilities</h4>
+                <ul className="text-gray-300 space-y-2">
+                  {jobDetail.responsibilities.map((responsibility, index) => (
+                    <li key={index} className="flex items-start">
+                      <svg className="w-5 h-5 text-blue-400 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      {responsibility}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div className="mb-8">
-              <h4 className="text-lg font-semibold text-white mb-4">Responsibilities</h4>
-              <ul className="text-gray-300 space-y-2">
-                {jobDetail.responsibilities.map((responsibility, index) => (
-                  <li key={index} className="flex items-start">
-                    <svg className="w-5 h-5 text-blue-400 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    {responsibility}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="mb-8">
-              <h4 className="text-lg font-semibold text-white mb-4">Requirements</h4>
-              <ul className="text-gray-300 space-y-2">
-                {jobDetail.requirements.map((requirement, index) => (
-                  <li key={index} className="flex items-start">
-                    <svg className="w-5 h-5 text-blue-400 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    {requirement}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="mb-8">
-              <h4 className="text-lg font-semibold text-white mb-4">Benefits</h4>
-              <ul className="text-gray-300 space-y-2">
-                {jobDetail.benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-start">
-                    <svg className="w-5 h-5 text-blue-400 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    {benefit}
-                  </li>
-                ))}
-              </ul>
+            <div className="flex flex-col md:flex-row gap-8 mb-8 justify-between">
+              <div className="mb-8">
+                <h4 className="text-lg font-semibold text-white mb-4">Requirements</h4>
+                <ul className="text-gray-300 space-y-2">
+                  {jobDetail.requirements.map((requirement, index) => (
+                    <li key={index} className="flex items-start">
+                      <svg className="w-5 h-5 text-blue-400 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      {requirement}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mb-8">
+                <h4 className="text-lg font-semibold text-white mb-4">Benefits</h4>
+                <ul className="text-gray-300 space-y-2">
+                  {jobDetail.benefits.map((benefit, index) => (
+                    <li key={index} className="flex items-start">
+                      <svg className="w-5 h-5 text-blue-400 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
             <p className="text-gray-300 mb-6">Shifts: {jobDetail.shifts}</p>
             <button
@@ -582,37 +507,40 @@ export default function Career() {
           <p className="text-base md:text-lg text-gray-300 max-w-3xl text-center mb-8">
             This won’t take more than 5 minutes. Join our team and start your journey with us!
           </p>
-          <div className="flex flex-col gap-6 max-w-xl w-full">
-            <div className="p-6 rounded-xl border border-gray-700">
-              <h4 className="text-lg font-semibold text-white mb-4">Step 1: Personal Details</h4>
-              <input
-                type="text"
-                placeholder="Full Name"
-                className="w-full p-2 mb-4 rounded-lg bg-gray-800 text-white border border-gray-600"
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                className="w-full p-2 mb-4 rounded-lg bg-gray-800 text-white border border-gray-600"
-              />
-              <input
-                type="text"
-                placeholder="Location"
-                className="w-full p-2 rounded-lg bg-gray-800 text-white border border-gray-600"
-              />
+          <div className="flex flex-col gap-6 max-w-4xl w-full">
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="p-6 rounded-xl border border-gray-700">
+                <h4 className="text-lg font-semibold text-white mb-4">Step 1: Personal Details</h4>
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  className="w-full p-2 mb-4 rounded-lg bg-gray-800 text-white border border-gray-600"
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="w-full p-2 mb-4 rounded-lg bg-gray-800 text-white border border-gray-600"
+                />
+                <input
+                  type="text"
+                  placeholder="Location"
+                  className="w-full p-2 rounded-lg bg-gray-800 text-white border border-gray-600"
+                />
+              </div>
+              <div className="p-6 rounded-xl border border-gray-700">
+                <h4 className="text-lg font-semibold text-white mb-4">Step 2: Upload CV</h4>
+                <input
+                  type="file"
+                  className="w-full p-2 mb-4 rounded-lg bg-gray-800 text-white border border-gray-600"
+                />
+                <input
+                  type="url"
+                  placeholder="LinkedIn Profile (Optional)"
+                  className="w-full p-2 rounded-lg bg-gray-800 text-white border border-gray-600"
+                />
+              </div>
             </div>
-            <div className="p-6 rounded-xl border border-gray-700">
-              <h4 className="text-lg font-semibold text-white mb-4">Step 2: Upload CV</h4>
-              <input
-                type="file"
-                className="w-full p-2 mb-4 rounded-lg bg-gray-800 text-white border border-gray-600"
-              />
-              <input
-                type="url"
-                placeholder="LinkedIn Profile (Optional)"
-                className="w-full p-2 rounded-lg bg-gray-800 text-white border border-gray-600"
-              />
-            </div>
+
             <div className="p-6 rounded-xl border border-gray-700">
               <h4 className="text-lg font-semibold text-white mb-4">Step 3: Short Questions</h4>
               <input
@@ -631,34 +559,23 @@ export default function Career() {
                 rows="4"
               ></textarea>
             </div>
-            <button
-              className="px-6 py-3 text-white rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-800/50 transition-all duration-300"
-            >
-              Review & Submit
-            </button>
+            <div className="flex justify-center">
+              <button
+                className="max-w-md px-6 py-3 text-white rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-800/50 transition-all duration-300"
+              >
+                Review & Submit
+              </button>
+            </div>
           </div>
         </section>
 
         {/* Testimonials */}
         <section id="testimonials" className="testimonials py-16 px-6 flex flex-col items-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 text-center">
-            Employee Voices
-          </h2>
-          <div className="flex flex-col gap-6 max-w-4xl w-full">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={index}
-                className="testimonial p-6 rounded-xl border border-gray-700 shadow-lg"
-              >
-                <p className="text-gray-300 italic">“{testimonial.quote}”</p>
-                <p className="text-gray-200 font-semibold mt-2">{testimonial.author}</p>
-              </div>
-            ))}
-          </div>
+          <TestimonialsSection />
         </section>
 
         {/* Call to Action */}
-        <section id="cta" className="py-16 px-6 flex flex-col items-center bg-gradient-to-b from-gray-900 to-gray-800">
+        <section id="cta" className="py-16 px-6 flex flex-col items-center">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 text-center">
             Your Next Step Starts Here
           </h2>

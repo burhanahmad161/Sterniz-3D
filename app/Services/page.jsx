@@ -1,10 +1,12 @@
 "use client";
 import { Canvas, useThree } from "@react-three/fiber";
+import React from "react";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { useRef, useEffect, useState } from "react";
 import * as THREE from "three";
 import gsap from "gsap";
 import { ScrollTrigger, ScrollToPlugin } from "gsap/all";
+import { FaCog, FaBuilding, FaShieldAlt, FaLightbulb, FaCode } from 'react-icons/fa';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -226,6 +228,7 @@ export default function Services() {
       cta: "Request Consultation",
       zValue: -22,
       rotationY: 0.2,
+      icon: FaCog,
     },
     {
       id: "ifm",
@@ -247,6 +250,7 @@ export default function Services() {
       cta: "Configure Service",
       zValue: -22,
       rotationY: 0.2,
+      icon: FaBuilding,
     },
     {
       id: "security",
@@ -268,6 +272,7 @@ export default function Services() {
       cta: "Request Consultation",
       zValue: -22,
       rotationY: 0.2,
+      icon: FaShieldAlt,
     },
     {
       id: "consulting",
@@ -289,6 +294,7 @@ export default function Services() {
       cta: "Request Consultation",
       zValue: -22,
       rotationY: 0.2,
+      icon: FaLightbulb,
     },
     {
       id: "software",
@@ -310,6 +316,7 @@ export default function Services() {
       cta: "Request a Demo",
       zValue: -14,
       rotationY: 0.4,
+      icon: FaCode,
     },
   ];
 
@@ -353,32 +360,32 @@ export default function Services() {
       <div className="relative z-10">
         {/* Hero Section */}
         <section id="hero-section" className="hero-section min-h-screen flex flex-col items-center justify-center px-6 py-16">
-          <h1 className="hero-text text-4xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight text-center">
+          <h1 className="hero-text text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-300">
             Our Services
           </h1>
-          <p className="hero-text mt-4 text-lg md:text-xl lg:text-2xl font-medium text-gray-200 text-center">
+          <p className="hero-text mt-4 text-lg md:text-xl lg:text-2xl font-medium text-gray-100 text-center">
             Transforming Spaces, Empowering Futures
           </p>
-          <p className="hero-text mt-4 text-base md:text-lg text-gray-300 max-w-3xl text-center">
+          <p className="hero-text mt-4 text-base md:text-lg text-gray-200 max-w-3xl text-center">
             Discover our comprehensive facility management and software solutions, designed to create efficient, secure, and sustainable environments.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-6">
             <button
               onClick={() => handleServiceClick(-22, "facility-services", 0.2)}
-              className="service-tile px-8 py-3 text-white rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-800/50 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="service-tile px-8 py-3 text-blue-200 rounded-lg border border-blue-300 hover:border-blue-400 hover:bg-blue-900/30 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Facility Services
             </button>
             <button
               onClick={() => handleServiceClick(-14, "software-solutions", 0.4)}
-              className="service-tile px-8 py-3 text-white rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-800/50 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="service-tile px-8 py-3 text-purple-200 rounded-lg border border-purple-300 hover:border-purple-400 hover:bg-purple-900/30 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Software Solutions
             </button>
           </div>
           <button
             onClick={() => handleServiceClick(-30, "hero-section", 0)}
-            className="mt-6 px-6 py-2 text-white rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-800/50 transition-all duration-300"
+            className="mt-6 px-6 py-2 text-gray-200 rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-800/30 transition-all duration-300"
           >
             Back to City
           </button>
@@ -386,19 +393,20 @@ export default function Services() {
 
         {/* Facility Services Section */}
         <section id="facility-services" className="services-section py-16 px-6 flex flex-col items-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-blue-500">
             Facility Services
           </h2>
-          <p className="text-base md:text-lg text-gray-300 max-w-3xl text-center mb-12">
+          <p className="text-base md:text-lg text-gray-200 max-w-3xl text-center mb-12">
             Our facility services create vibrant, efficient spaces through technical expertise, infrastructural excellence, robust security, and strategic consulting.
           </p>
-          <div className="flex flex-col gap-12 max-w-4xl w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl w-full">
             {servicesData.slice(0, 4).map((service) => (
               <div
                 key={service.id}
                 id={service.id}
-                className="sub-service-card flex flex-col p-8 rounded-xl bg-gray-800/50 border border-gray-700 shadow-lg"
+                className="sub-service-card flex flex-col p-8 rounded-xl border border-blue-600/50 shadow-lg hover:shadow-2xl transition-shadow duration-300"
               >
+                <service.icon className="w-12 h-12 text-blue-400 mb-4" />
                 <h3 className="text-2xl font-semibold text-white mb-4">{service.title}</h3>
                 <p className="text-gray-300 mb-6">{service.description}</p>
 
@@ -409,9 +417,11 @@ export default function Services() {
                     {service.process.map((step, index) => (
                       <div
                         key={index}
-                        className="p-4 rounded-lg bg-gray-700/30 border border-gray-600"
+                        className="p-4 rounded-lg bg-gray-800/50 border border-gray-700 flex flex-col items-center text-center"
                       >
-                        <p className="text-gray-200 font-semibold">Step {index + 1}</p>
+                        <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold mb-2">
+                          {index + 1}
+                        </div>
                         <p className="text-gray-300">{step}</p>
                       </div>
                     ))}
@@ -433,27 +443,10 @@ export default function Services() {
                   </ul>
                 </div>
 
-                {/* Reference */}
-                <div className="mb-8">
-                  <h4 className="text-lg font-semibold text-white mb-4">Case Study</h4>
-                  <p className="text-gray-300">{service.reference}</p>
-                </div>
-
-                {/* FAQs */}
-                <div className="faq-section mb-8">
-                  <h4 className="text-lg font-semibold text-white mb-4">Frequently Asked Questions</h4>
-                  {service.faqs.map((faq, index) => (
-                    <div key={index} className="faq-item mb-4">
-                      <p className="text-gray-200 font-semibold">{faq.q}</p>
-                      <p className="text-gray-300">{faq.a}</p>
-                    </div>
-                  ))}
-                </div>
-
                 {/* CTA */}
                 <button
                   onClick={() => handleServiceClick(service.zValue, service.id, service.rotationY)}
-                  className="px-6 py-3 text-white rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-700/50 transition-all duration-300 self-start"
+                  className="px-6 py-3 text-blue-200 rounded-lg border border-blue-300 hover:border-blue-400 hover:bg-blue-900/30 transition-all duration-300 self-start shadow-md hover:shadow-lg"
                 >
                   {service.cta}
                 </button>
@@ -464,17 +457,18 @@ export default function Services() {
 
         {/* Software Solutions Section */}
         <section id="software-solutions" className="services-section py-16 px-6 flex flex-col items-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-purple-500">
             Software Solutions
           </h2>
-          <p className="text-base md:text-lg text-gray-300 max-w-3xl text-center mb-12">
+          <p className="text-base md:text-lg text-gray-200 max-w-3xl text-center mb-12">
             Our Digital Hub delivers innovative software to streamline operations, enhance security, and provide actionable insights through advanced analytics.
           </p>
           <div className="flex flex-col gap-12 max-w-4xl w-full">
             <div
               id={servicesData[4].id}
-              className="sub-service-card flex flex-col p-8 rounded-xl bg-gray-800/50 border border-gray-700 shadow-lg"
+              className="sub-service-card flex flex-col p-8 rounded-xl border border-purple-600/50 shadow-lg hover:shadow-2xl transition-shadow duration-300"
             >
+              {React.createElement(servicesData[4].icon, { className: "w-12 h-12 text-purple-400 mb-4" })}
               <h3 className="text-2xl font-semibold text-white mb-4">{servicesData[4].title}</h3>
               <p className="text-gray-300 mb-6">{servicesData[4].description}</p>
 
@@ -485,9 +479,11 @@ export default function Services() {
                   {servicesData[4].process.map((step, index) => (
                     <div
                       key={index}
-                      className="p-4 rounded-lg bg-gray-700/30 border border-gray-600"
+                      className="p-4 rounded-lg bg-gray-800/50 border border-gray-700 flex flex-col items-center text-center"
                     >
-                      <p className="text-gray-200 font-semibold">Step {index + 1}</p>
+                      <div className="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold mb-2">
+                        {index + 1}
+                      </div>
                       <p className="text-gray-300">{step}</p>
                     </div>
                   ))}
@@ -509,27 +505,10 @@ export default function Services() {
                 </ul>
               </div>
 
-              {/* Reference */}
-              <div className="mb-8">
-                <h4 className="text-lg font-semibold text-white mb-4">Case Study</h4>
-                <p className="text-gray-300">{servicesData[4].reference}</p>
-              </div>
-
-              {/* FAQs */}
-              <div className="faq-section mb-8">
-                <h4 className="text-lg font-semibold text-white mb-4">Frequently Asked Questions</h4>
-                {servicesData[4].faqs.map((faq, index) => (
-                  <div key={index} className="faq-item mb-4">
-                    <p className="text-gray-200 font-semibold">{faq.q}</p>
-                    <p className="text-gray-300">{faq.a}</p>
-                  </div>
-                ))}
-              </div>
-
               {/* CTA */}
               <button
                 onClick={() => handleServiceClick(servicesData[4].zValue, servicesData[4].id, servicesData[4].rotationY)}
-                className="px-6 py-3 text-white rounded-lg border border-gray-300 hover:border-gray-400 hover:bg-gray-700/50 transition-all duration-300 self-start"
+                className="px-6 py-3 text-purple-200 rounded-lg border border-purple-300 hover:border-purple-400 hover:bg-purple-900/30 transition-all duration-300 self-start shadow-md hover:shadow-lg"
               >
                 {servicesData[4].cta}
               </button>
