@@ -13,7 +13,7 @@ export default function Navbar() {
     const blogs = ["Our Mission", "Our Vision", "Our Team", "Our Approach"];
 
     return (
-        <div className="fixed top-0 left-0 md:right-0 z-20 flex justify-center">
+        <div className="top-0 left-0 md:right-0 z-20 flex justify-center">
             {/* Navbar container */}
             <div className="flex items-center justify-between w-full max-w-7xl px-4 py-3 backdrop-blur-md text-white mt-4 mx-2 md:mx-24 rounded-2xl bg-gray-400 gap-32 md:gap-0">
                 {/* Left - Logo */}
@@ -124,61 +124,25 @@ export default function Navbar() {
                         <a href="/">
                             <li onClick={() => setIsOpen(false)}>Home</li>
                         </a>
-                        <li>
-                            <button
-                                className="flex justify-between w-full"
-                                onClick={() => setActiveDropdown(activeDropdown === "blogs" ? null : "blogs")}
-                            >
-                                About Us <ChevronDown size={18} />
-                            </button>
-                            {activeDropdown === "blogs" && (
-                                <ul className="pl-4 mt-2 space-y-2">
-                                    {blogs.map((item) => (
-                                        <li key={item}>{item}</li>
-                                    ))}
-                                </ul>
-                            )}
-                        </li>
-
-
-                        {/* Services Expand/Collapse */}
-                        <li>
-                            <button
-                                className="flex justify-between w-full"
-                                onClick={() => setActiveDropdown(activeDropdown === "services" ? null : "services")}
-                            >
-                                Our Services <ChevronDown size={18} />
-                            </button>
-                            {activeDropdown === "services" && (
-                                <ul className="pl-4 mt-2 space-y-2">
-                                    {services.map((item) => (
-                                        <li key={item}>{item}</li>
-                                    ))}
-                                </ul>
-                            )}
-                        </li>
-
-                        {/* Portfolio Expand/Collapse */}
-                        <li>
-                            <button
-                                className="flex justify-between w-full"
-                                onClick={() => setActiveDropdown(activeDropdown === "portfolio" ? null : "portfolio")}
-                            >
-                                Portfolio <ChevronDown size={18} />
-                            </button>
-                            {activeDropdown === "portfolio" && (
-                                <ul className="pl-4 mt-2 space-y-2">
-                                    {portfolio.map((item) => (
-                                        <li key={item}>{item}</li>
-                                    ))}
-                                </ul>
-                            )}
-                        </li>
-                        <li onClick={() => setIsOpen(false)}>Blog</li>
-
-                        {/* Blog Expand/Collapse */}
-
-                        <li onClick={() => setIsOpen(false)}>Contact Us</li>
+                        <a href="/About">
+                            <li onClick={() => setIsOpen(false)}>About Us</li>
+                        </a>
+                        {/* Services Dropdown */}
+                        <a href="/Services">
+                            <li onClick={() => setIsOpen(false)}>Our Services</li>
+                        </a>
+                        <a href="/SubCompany">
+                            <li onClick={() => setIsOpen(false)}>Sub Company</li>
+                        </a>
+                        <a href="/Academy">
+                            <li onClick={() => setIsOpen(false)}>Academy</li>   
+                        </a>
+                        <a href="/Career">
+                            <li onClick={() => setIsOpen(false)}>Career</li>
+                        </a>
+                        <a href="/Contact">
+                            <li onClick={() => setIsOpen(false)}>Contact Us</li>
+                        </a>
                     </ul>
 
                     {/* Button at bottom */}

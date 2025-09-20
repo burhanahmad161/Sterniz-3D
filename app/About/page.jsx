@@ -329,7 +329,7 @@ export default function AboutUs() {
             <div className="relative z-10">
                 {/* Hero Section */}
                 <section id="hero-section" className="hero-section min-h-screen flex flex-col items-center justify-center px-6">
-                    <h1 className="hero-text text-5xl md:text-7xl lg:text-8xl font-extrabold text-white tracking-tight">
+                    <h1 className="hero-text text-5xl md:text-7xl lg:text-8xl font-extrabold text-white tracking-tight text-center">
                         About Living City Solutions
                     </h1>
                     <p className="hero-text mt-4 text-lg md:text-xl lg:text-2xl font-medium text-white">

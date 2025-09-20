@@ -206,7 +206,7 @@ export default function Contact() {
       <div className="relative z-10">
 
         {/* Hero Section */}
-        <section id="hero-section" className="hero-section min-h-screen flex flex-col items-center justify-center px-6">
+        <section id="hero-section" className="hero-section min-h-screen flex flex-col items-center justify-center px-6 text-center">
           <h1 className="hero-text text-5xl md:text-7xl lg:text-8xl font-extrabold text-white tracking-tight">
             Living City Solutions
           </h1>
@@ -216,7 +216,7 @@ export default function Contact() {
           <p className="hero-text mt-4 text-base md:text-lg lg:text-xl text-gray-200 max-w-2xl text-center">
             Reach out to explore our facility management and training solutions, tailored to your needs.
           </p>
-          <div className="mt-8 flex space-x-4">
+          <div className="mt-8 flex space-x-4 flex-wrap justify-center gap-4">
             <button
               onClick={() => handleServiceClick(-22, "services-section", 0.2)}
               className="service-tile px-6 py-3 text-white rounded-lg hover:text-gray-300 border border-gray-300 hover:border-gray-400 transition-colors duration-300 relative group"

@@ -945,7 +945,7 @@ export default function Home() {
 
         {/* Hero Section */}
         <section id="hero-section" className="hero-section min-h-screen flex flex-col items-center justify-center px-6">
-          <h1 className="hero-text text-5xl md:text-7xl lg:text-8xl font-extrabold text-white tracking-tight">
+          <h1 className="hero-text text-5xl md:text-7xl lg:text-8xl font-extrabold text-white tracking-tight text-center">
             Living City Solutions
           </h1>
           <p className="hero-text mt-4 text-lg md:text-xl lg:text-2xl font-medium text-white">
@@ -954,7 +954,7 @@ export default function Home() {
           <p className="hero-text mt-4 text-base md:text-lg lg:text-xl text-gray-200 max-w-2xl text-center">
             Explore our living city of services, where innovation meets precision in facility management and professional training.
           </p>
-          <div className="mt-8 flex space-x-4">
+          <div className="mt-8 flex space-x-4 flex-wrap justify-center gap-4">
             <button
               onClick={() => handleServiceClick(-22, "services-section")}
               className="service-tile px-6 py-3 bg-gray-800/80 backdrop-blur-md text-white rounded-lg hover:bg-gray-700 transition-colors duration-300 relative group"
